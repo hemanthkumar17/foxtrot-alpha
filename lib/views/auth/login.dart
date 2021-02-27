@@ -29,10 +29,14 @@ class _LoginPageState extends State<LoginPage> {
     );
     submitButton = ElevatedButton(
       onPressed: () {
-        Auth().loginFirebase({
-          'email': emailController.text,
-          'password': passwordController.text
-        });
+        // Auth().loginFirebase({
+        //   'email': emailController.text,
+        //   'password': passwordController.text
+        // });
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => Dashboard()),
+        // );
       },
       child: Container(
           alignment: Alignment.center,
