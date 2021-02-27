@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/views/dashboard.dart';
 
 import 'views/auth/login.dart';
 
@@ -11,6 +12,7 @@ class FoxtrotAlpha extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(routes: {
       '/': (context) => LoginPage(),
+      '/dashboard': (context) => Dashboard(),
     });
   }
 }
