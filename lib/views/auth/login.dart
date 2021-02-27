@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/api/auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -7,27 +8,32 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Widget userNameField, passwordField;
+  Widget emailField, passwordField;
   Widget submitButton, registerButton, buttons;
 
   _LoginPageState() {
-    userNameField = TextFormField(
+    emailField = TextFormField(
       autofocus: true,
-      controller: userNameController,
+      controller: emailController,
       decoration:
-          InputDecoration(border: OutlineInputBorder(), labelText: "Username"),
+          InputDecoration(border: OutlineInputBorder(), labelText: "Email"),
     );
     passwordField = TextFormField(
       autofocus: true,
-      controller: userNameController,
+      controller: passwordController,
       decoration:
           InputDecoration(border: OutlineInputBorder(), labelText: "Password"),
     );
     submitButton = ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Auth().loginFirebase({
+          'email': emailController.text,
+          'password': passwordController.text
+        });
+      },
       child: Container(
           alignment: Alignment.center,
           width: 100,
@@ -85,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [userNameField, passwordField, buttons],
+                children: [emailField, passwordField, buttons],
               )),
         )
       ],
