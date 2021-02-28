@@ -1,9 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/views/dashboard.dart';
 
 import 'views/auth/login.dart';
 
 void main() {
+  Firebase.initializeApp();
   runApp(FoxtrotAlpha());
 }
 
@@ -12,7 +13,7 @@ class FoxtrotAlpha extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(routes: {
       '/': (context) => LoginPage(),
-      '/dashboard': (context) => Dashboard(),
+      '/dashboard': (context) => LoginPage(),
     });
   }
 }

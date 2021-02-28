@@ -1,17 +1,16 @@
+import 'package:myapp/model/challenge_match.dart';
+
 class Challenger {
   final String challengerName;
-  final String email;
+  final String uid;
   final int points;
-
-  Challenger({this.challengerName, this.email, this.points});
+  static List<ChallengeMatch> challenges;
+  Challenger({this.challengerName, this.uid, this.points});
   Challenger.fromMap(Map map)
       : this(
-            challengerName: map['ChallengerName'],
-            email: map['email'],
+            challengerName: map['userName'],
+            uid: map['uid'],
             points: map['points']);
-  Map<String, dynamic> asMap() => {
-        'ChallengerName': this.challengerName,
-        'email': this.email,
-        'points': this.points
-      };
+  Map<String, dynamic> asMap() =>
+      {'userName': this.challengerName, 'uid': this.uid, 'points': this.points};
 }

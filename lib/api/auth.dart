@@ -1,15 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:myapp/api/challengerMethods.dart';
 
 class Auth {
   static final GoogleSignIn googleSignIn = GoogleSignIn();
   static String name;
   static String imageUrl;
-
-  Auth() {
-    Firebase.initializeApp();
-  }
+  static User user;
 
   Future<void> loginFirebase() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -40,5 +37,7 @@ class Auth {
       final User currentUser = _auth.currentUser;
       assert(user.uid == currentUser.uid);
     }
+    await ChallengerMethods().initChallenger(user);
+    Auth.user = user;
   }
 }
